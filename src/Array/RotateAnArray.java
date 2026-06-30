@@ -1,7 +1,6 @@
 package Array;
 
 public class RotateAnArray {  public void reverse(int i,int j,int[]nums){
-    int n= nums.length-1;
     while(i<j) {
         int temp = 0;
         temp = nums[i];
