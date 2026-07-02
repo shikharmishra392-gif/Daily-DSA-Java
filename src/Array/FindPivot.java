@@ -7,32 +7,37 @@ public class FindPivot {
         int rightsum[]= new int[nums.length];
         leftsum[0]=nums[0];
         int k=0;
-        for(int i=1;i< nums.length;i++){
-            leftsum[i]=leftsum[i]+nums[i];
+        for(int i=1;i<nums.length;i++){
+            leftsum[i]=leftsum[i-1]+nums[i];
 
         }
         rightsum[rightsum.length-1]=nums[nums.length-1];
-        for(int j=nums.length-2;j==0;j--){
-            rightsum[j]=leftsum[j]+nums[j];
+        for(int j=nums.length-2;j>=0;j--){
+            rightsum[j]=rightsum[j+1]+nums[j];
 
         }
         int i=0;
-        int j= 0;
+        int pivotindex=-1;
 
-        while(i<leftsum.length&&j<rightsum.length){
-            if(leftsum[i]==rightsum[j]){
-                 k =nums[i];
+        while(i<rightsum.length){
+            if(leftsum[i]==rightsum[i]){
+                pivotindex=i;
                  break;
             }else {
                 i++;
-                j++;
             }
         }
-        System.out.println(nums[i]);
+        if(pivotindex!=-1) {
+
+
+            System.out.println(nums[i]);
+        }else{
+            System.out.println(-1);
+        }
     }
 
     static void main() {
-        int[]nums={12,19,2,-20,6,14,-1};
+        int[]nums={1, 7, 3, 6, 5, 6};
         Findpivot(nums);
     }
 }
